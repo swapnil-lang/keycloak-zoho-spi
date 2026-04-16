@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <!--
+    Zoho "Z" wordmark logo (simplified geometric representation).
+    This SVG is included as a placeholder that renders a clean "Z" in Zoho brand colors.
+    For production use, replace with the official Zoho brand asset from:
+    https://www.zoho.com/branding/
+
+    Zoho brand colors:
+      Primary red:   #E42527
+      Dark charcoal: #222222
+  -->
+
+  <!-- Background circle -->
+  <circle cx="50" cy="50" r="48" fill="#E42527"/>
+
+  <!-- Zoho "Z" letterform -->
+  <text
+    x="50"
+    y="70"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="62"
+    font-weight="bold"
+    fill="#FFFFFF"
+    text-anchor="middle"
+    dominant-baseline="auto"
+  >Z</text>
+</svg>
