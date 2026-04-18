@@ -121,19 +121,19 @@ The following Zoho profile fields are automatically mapped to the Keycloak user:
 
 | Zoho Field | Keycloak Attribute |
 |---|---|
-| `ZAID` | Federated identity ID (internal, stable) |
+| `ZUID` | Federated identity ID (internal, stable) |
 | `Email` | Email + Username |
 | `First_Name` | First name |
 | `Last_Name` | Last name |
 
 ### Custom attribute mapping
 
-Additional Zoho profile fields (e.g., `ZAID`, `Display_Name`) can be mapped to
+Additional Zoho profile fields (e.g., `ZUID`, `Display_Name`) can be mapped to
 Keycloak user attributes via the **Mappers** tab on the Zoho identity provider:
 
 1. Open the Zoho identity provider → **Mappers** tab → **Add Mapper**.
 2. Select type **Zoho User Attribute Mapper**.
-3. Set **JSON Field Path** to the Zoho field name (e.g., `ZAID`).
+3. Set **JSON Field Path** to the Zoho field name (e.g., `ZUID`).
 4. Set **User Attribute** to your desired Keycloak attribute name (e.g., `zoho_id`).
 5. Save.
 
@@ -150,8 +150,13 @@ to avoid theme conflicts:
 1. Add to your theme's `theme.properties`:
    ```properties
    kcLogoIdP-zoho=zoho-idp-icon
-   styles=css/login.css css/zoho-idp.css
    ```
+   Then **append** `css/zoho-idp.css` to your existing `styles` line (do not replace it):
+   ```properties
+   styles=css/login.css ... css/zoho-idp.css
+   ```
+   > **Warning:** Do not set `styles=css/login.css css/zoho-idp.css` as a standalone line —
+   > this replaces your entire stylesheet list and will break your theme.
 
 2. Copy `src/main/resources/theme/keycloak/login/resources/css/zoho-idp.css`
    into your theme's `resources/css/` directory.

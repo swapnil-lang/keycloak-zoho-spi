@@ -82,7 +82,7 @@ public class ZohoIdentityProvider
     // -------------------------------------------------------------------------
 
     /** Zoho Account ID — a stable numeric string used as the federated identity ID. */
-    public static final String FIELD_ZAID         = "ZAID";
+    public static final String FIELD_ZUID         = "ZUID";
 
     /** User's display name (may include middle names or honorifics). */
     public static final String FIELD_DISPLAY_NAME = "Display_Name";
@@ -168,8 +168,9 @@ public class ZohoIdentityProvider
                         "No response received from Zoho user info endpoint: " + userInfoUrl);
             }
 
-            logger.debugf("Zoho user profile received for ZAID: %s",
-                    profile.has(FIELD_ZAID) ? profile.get(FIELD_ZAID).asText() : "<missing>");
+            logger.infof("Zoho user profile raw response: %s", profile.toString());
+            logger.infof("Zoho user profile received for ZAID: %s",
+                    profile.has(FIELD_ZUID) ? profile.get(FIELD_ZUID).asText() : "<missing>");
 
             return extractIdentityFromProfile(profile);
 
@@ -206,10 +207,10 @@ public class ZohoIdentityProvider
         // ZAID is mandatory — it is the only stable, unique identifier Zoho provides.
         // getJsonProperty() (inherited from AbstractIdentityProvider) returns null
         // safely if the field is absent, rather than throwing NullPointerException.
-        String zaid = getJsonProperty(profile, FIELD_ZAID);
+        String zaid = getJsonProperty(profile, FIELD_ZUID);
         if (zaid == null || zaid.isBlank()) {
             throw new IdentityBrokerException(
-                    "The 'ZAID' field is missing from the Zoho user info response. " +
+                    "The 'ZUID' field is missing from the Zoho user info response. " +
                     "Ensure the OAuth scope 'AaaServer.profile.Read' is granted and " +
                     "that the Zoho application has the 'User Info' permission enabled " +
                     "in the Zoho API Console.");
