@@ -12,7 +12,7 @@
 
   <name>Keycloak Zoho Social Identity Provider</name>
   <description>Zoho OAuth2 Social Login SPI for Keycloak — adds Zoho as an identity provider with multi-data-center support.</description>
-  <url>https://github.com/YOUR_USERNAME/keycloak-zoho-spi</url>
+  <url>https://github.com/swapnil-lang/keycloak-zoho-spi</url>
   <inceptionYear>2024</inceptionYear>
 
   <licenses>

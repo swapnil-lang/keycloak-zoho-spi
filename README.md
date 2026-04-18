@@ -45,7 +45,7 @@ dropdown in the Keycloak Admin UI.
 ### 2. Build the JAR
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/keycloak-zoho-spi.git
+git clone https://github.com/swapnil-lang/keycloak-zoho-spi.git
 cd keycloak-zoho-spi
 mvn clean package
 # Output: target/keycloak-zoho-spi-1.0.0.jar
