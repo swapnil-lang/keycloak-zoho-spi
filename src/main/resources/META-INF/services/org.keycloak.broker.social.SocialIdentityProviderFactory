@@ -1,1 +1,1 @@
-org.keycloak.social.zoho.ZohoIdentityProviderFactory
+io.github.swapnillang.keycloak.zoho.ZohoIdentityProviderFactory

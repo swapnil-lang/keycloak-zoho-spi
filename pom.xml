@@ -5,9 +5,9 @@
              http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.keycloak</groupId>
+  <groupId>io.github.swapnil-lang</groupId>
   <artifactId>keycloak-zoho-spi</artifactId>
-  <version>1.0.0</version>
+  <version>1.1.0</version>
   <packaging>jar</packaging>
 
   <name>Keycloak Zoho Social Identity Provider</name>
@@ -24,7 +24,7 @@
   </licenses>
 
   <properties>
-    <keycloak.version>26.0.5</keycloak.version>
+    <keycloak.version>26.8.1</keycloak.version>
     <java.version>17</java.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
@@ -134,7 +134,7 @@
             <manifestEntries>
               <Implementation-Title>${project.name}</Implementation-Title>
               <Implementation-Version>${project.version}</Implementation-Version>
-              <Implementation-Vendor>keycloak-zoho-spi contributors</Implementation-Vendor>
+              <Implementation-Vendor>Swapnil Sabane</Implementation-Vendor>
             </manifestEntries>
           </archive>
         </configuration>
