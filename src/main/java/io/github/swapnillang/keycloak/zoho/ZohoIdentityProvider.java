@@ -169,8 +169,7 @@ public class ZohoIdentityProvider
                         "No response received from Zoho user info endpoint: " + userInfoUrl);
             }
 
-            logger.infof("Zoho user profile raw response: %s", profile.toString());
-            logger.infof("Zoho user profile received for ZAID: %s",
+            logger.debugf("Zoho user profile received for ZUID: %s",
                     profile.has(FIELD_ZUID) ? profile.get(FIELD_ZUID).asText() : "<missing>");
 
             return extractIdentityFromProfile(profile);
