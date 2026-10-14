@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.keycloak.social.zoho;
+package io.github.swapnillang.keycloak.zoho;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import org.jboss.logging.Logger;
@@ -21,7 +21,8 @@ import org.keycloak.broker.oidc.AbstractOAuth2IdentityProvider;
 import org.keycloak.broker.oidc.mappers.AbstractJsonUserAttributeMapper;
 import org.keycloak.broker.provider.BrokeredIdentityContext;
 import org.keycloak.broker.provider.IdentityBrokerException;
-import org.keycloak.broker.provider.util.SimpleHttp;
+import org.keycloak.http.simple.SimpleHttp;
+import org.keycloak.http.simple.SimpleHttpRequest;
 import org.keycloak.broker.social.SocialIdentityProvider;
 import org.keycloak.models.KeycloakSession;
 
@@ -134,11 +135,11 @@ public class ZohoIdentityProvider
      *
      * @param subjectToken the access token obtained from the token endpoint
      * @param userInfoUrl  the full user-info URL for the configured data center
-     * @return a configured {@link SimpleHttp} GET request
+     * @return a configured {@link SimpleHttpRequest} GET request
      */
     @Override
-    protected SimpleHttp buildUserInfoRequest(String subjectToken, String userInfoUrl) {
-        return SimpleHttp.doGet(userInfoUrl, session)
+    protected SimpleHttpRequest buildUserInfoRequest(String subjectToken, String userInfoUrl) {
+        return SimpleHttp.create(session).doGet(userInfoUrl)
                 .header("Authorization", "Zoho-oauthtoken " + subjectToken);
     }
 
@@ -168,8 +169,7 @@ public class ZohoIdentityProvider
                         "No response received from Zoho user info endpoint: " + userInfoUrl);
             }
 
-            logger.infof("Zoho user profile raw response: %s", profile.toString());
-            logger.infof("Zoho user profile received for ZAID: %s",
+            logger.debugf("Zoho user profile received for ZUID: %s",
                     profile.has(FIELD_ZUID) ? profile.get(FIELD_ZUID).asText() : "<missing>");
 
             return extractIdentityFromProfile(profile);

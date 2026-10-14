@@ -31,9 +31,9 @@ The output JAR is `target/keycloak-zoho-spi-<version>.jar`.
    ```bash
    # Docker
    docker run -p 8080:8080 \
-     -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin \
-     -v $(pwd)/target/keycloak-zoho-spi-1.0.0.jar:/opt/keycloak/providers/keycloak-zoho-spi.jar \
-     quay.io/keycloak/keycloak:26.0.5 start-dev
+     -e KC_BOOTSTRAP_ADMIN_USERNAME=admin -e KC_BOOTSTRAP_ADMIN_PASSWORD=admin \
+     -v $(pwd)/target/keycloak-zoho-spi-1.1.0.jar:/opt/keycloak/providers/keycloak-zoho-spi.jar \
+     quay.io/keycloak/keycloak:26.8.1 start-dev
    ```
 2. Open http://localhost:8080/admin, create a realm, and add the Zoho identity provider.
 3. Register your Keycloak redirect URI in the [Zoho API Console](https://api-console.zoho.com/).

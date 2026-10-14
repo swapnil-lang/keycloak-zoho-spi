@@ -12,7 +12,8 @@ dropdown in the Keycloak Admin UI.
 
 | SPI Version | Keycloak Version | Java |
 |---|---|---|
-| 1.0.x | 26.0.x | 17+ |
+| 1.1.x | 26.8.x | 17+ |
+| 1.0.x | 26.0.x (unsupported) | 17+ |
 
 > **Note:** Keycloak 26 is Quarkus-based. The legacy WildFly/JBoss deployment
 > model (Keycloak < 17) is not supported.
@@ -48,7 +49,7 @@ dropdown in the Keycloak Admin UI.
 git clone https://github.com/swapnil-lang/keycloak-zoho-spi.git
 cd keycloak-zoho-spi
 mvn clean package
-# Output: target/keycloak-zoho-spi-1.0.0.jar
+# Output: target/keycloak-zoho-spi-1.1.0.jar
 ```
 
 Or download the pre-built JAR from the [Releases](../../releases) page.
@@ -58,7 +59,7 @@ Or download the pre-built JAR from the [Releases](../../releases) page.
 Copy the JAR into Keycloak's `providers/` directory:
 
 ```bash
-cp target/keycloak-zoho-spi-1.0.0.jar /opt/keycloak/providers/
+cp target/keycloak-zoho-spi-1.1.0.jar /opt/keycloak/providers/
 ```
 
 Then start (or restart) Keycloak. For **production optimized** mode, run a build step first:
@@ -76,10 +77,10 @@ Then start (or restart) Keycloak. For **production optimized** mode, run a build
 
 ```bash
 docker run -p 8080:8080 \
-  -e KEYCLOAK_ADMIN=admin \
-  -e KEYCLOAK_ADMIN_PASSWORD=admin \
-  -v /path/to/keycloak-zoho-spi-1.0.0.jar:/opt/keycloak/providers/keycloak-zoho-spi.jar \
-  quay.io/keycloak/keycloak:26.0.5 start-dev
+  -e KC_BOOTSTRAP_ADMIN_USERNAME=admin \
+  -e KC_BOOTSTRAP_ADMIN_PASSWORD=admin \
+  -v /path/to/keycloak-zoho-spi-1.1.0.jar:/opt/keycloak/providers/keycloak-zoho-spi.jar \
+  quay.io/keycloak/keycloak:26.8.1 start-dev
 ```
 
 ### 4. Configure in Keycloak Admin UI
@@ -204,10 +205,10 @@ Key implementation files:
 
 | File | Purpose |
 |---|---|
-| [ZohoIdentityProvider.java](src/main/java/org/keycloak/social/zoho/ZohoIdentityProvider.java) | OAuth 2.0 flow + profile mapping |
-| [ZohoIdentityProviderConfig.java](src/main/java/org/keycloak/social/zoho/ZohoIdentityProviderConfig.java) | DC domain config property |
-| [ZohoIdentityProviderFactory.java](src/main/java/org/keycloak/social/zoho/ZohoIdentityProviderFactory.java) | Keycloak SPI registration + Admin UI fields |
-| [ZohoUserAttributeMapper.java](src/main/java/org/keycloak/social/zoho/ZohoUserAttributeMapper.java) | Custom attribute mapper |
+| [ZohoIdentityProvider.java](src/main/java/io/github/swapnillang/keycloak/zoho/ZohoIdentityProvider.java) | OAuth 2.0 flow + profile mapping |
+| [ZohoIdentityProviderConfig.java](src/main/java/io/github/swapnillang/keycloak/zoho/ZohoIdentityProviderConfig.java) | DC domain config property |
+| [ZohoIdentityProviderFactory.java](src/main/java/io/github/swapnillang/keycloak/zoho/ZohoIdentityProviderFactory.java) | Keycloak SPI registration + Admin UI fields |
+| [ZohoUserAttributeMapper.java](src/main/java/io/github/swapnillang/keycloak/zoho/ZohoUserAttributeMapper.java) | Custom attribute mapper |
 
 ---
 
